@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Your Order Invoice</h1><br><br>
+
+<h6>
+    <p>Invoice ID: {{cart_obj.id}}</p><br/>
+    <p>Created: {{cart_obj.created_at}}</p><br/>
+</h6>
+
+<h3><b>From :</b></h3>
+<p>Adomah Creations</p>
+<p>Address</p><br>
+
+<h3><b>To :</b></h3>
+<p>{{cart_obj.owner.name}}</p>
+<p>{{cart_obj.owner.email}}</p>
+<p>{{cart_obj.owner.phone}}</p><br>
+
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+    </tr>
+    {% for i in cart_items %}
+    <tr>
+        <td>{{i.item.name}}</td>
+        <td>{{i.item.price}}</td>
+        <td>{{i.quantity}}</td>
+        <td>{{i.total}}</td>
+    </tr>
+    {% endfor %}
+</table><br>
+<table>
+    <tr>
+        <th>Total</th>
+        <th>Tax</th>
+        <th>Grand Total</th>
+    </tr>
+    <tr>
+        <td>$ {{cart_obj.total_price}}</td>
+        <td>10%</td>
+        <td>$ {{cart_obj.total_amt}}</td>
+    </tr>
+</table>
+
+<h5>Thank You</h5>
+{% endblock content %}
