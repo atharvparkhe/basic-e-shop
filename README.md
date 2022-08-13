@@ -14,7 +14,6 @@ Customer authentication is done using *JWT Authentication*. Database used is *my
 * [Environment Variables](#-environment-variables)
 * [Run Locally](#-run-locally)
 * [Documentation](#-documentation)
-* [Demo](#-demo)
 * [Screen-Shots](#-screen-shots)
 * [Author](#-author)
 
