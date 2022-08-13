@@ -1,8 +1,8 @@
 
 ## E-Shop Application
 
-Sweet Mart is a complete E-Shop application through which customers can buy sweets online.
-Using this application, customers/users can view blogs and products, share thier review about it (blog comments and product review), add, edit and modify cart items (products) and checkout after entering delivary address and completing payment.
+This is a complete E-Shop Application.
+Using this application, customers/users can view products, add, edit and modify cart items (products) and checkout after entering delivary address and completing payment.
 Customer authentication is done using *JWT Authentication*. Database used is *mySQL* which is django's default database. Payment Gateway used is *Razorpay*.
 
 ### 🔗 Content
