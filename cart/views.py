@@ -1,6 +1,6 @@
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
 from app.models import ProductModel
@@ -14,10 +14,9 @@ client = razorpay.Client(auth=(config("PUBLIC_KEY"), config("PRIVATE_KEY")))
 
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated])
 def buy_now(request):
     try:
-        authentication_classes = [JWTAuthentication]
-        permission_classes = [IsAuthenticated]
         data = request.data
         customer = CustomerModel.objects.get(email=request.user.email)
         serializer = ModifyCartItemsSerializer(data=data)
@@ -45,10 +44,9 @@ def buy_now(request):
 
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated])
 def apply_coupon(request):
     try:
-        authentication_classes = [JWTAuthentication]
-        permission_classes = [IsAuthenticated]
         data = request.data
         customer = CustomerModel.objects.get(email=request.user)
         serializer = CouponSerializer(data=data)
@@ -70,10 +68,9 @@ def apply_coupon(request):
 
 
 @api_view(["GET"])
+@permission_classes([IsAuthenticated])
 def checkout(request):
     try:
-        authentication_classes = [JWTAuthentication]
-        permission_classes = [IsAuthenticated]
         user = CustomerModel.objects.get(email=request.user.email)
         if not OrderModel.objects.filter(owner=user, is_paid=False).exists():
             return Response({"message":"No items exist in cart"}, status=status.HTTP_404_NOT_FOUND)
@@ -93,10 +90,9 @@ def checkout(request):
 
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated])
 def resultPage(request):
     try:
-        authentication_classes = [JWTAuthentication]
-        permission_classes = [IsAuthenticated]
         data = request.data
         user = CustomerModel.objects.get(email=request.user.email)
         cart_obj = OrderModel.objects.get(owner=user, is_paid=False)

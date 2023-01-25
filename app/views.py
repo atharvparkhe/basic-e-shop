@@ -4,8 +4,6 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAdminUser
 from rest_framework.decorators import api_view
 from rest_framework import status
-from django.core.paginator import Paginator
-from base.utils import paginate
 from .serializers import *
 from .models import *
 

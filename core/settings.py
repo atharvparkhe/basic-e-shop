@@ -5,11 +5,11 @@ from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-k5-5i=y8uk&ym&rfhkq=b9e)iwv_j10wa@7dxa$kcv1$qqj32-'
+SECRET_KEY = config("SECRET_KEY")
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'jazzmin',
@@ -139,7 +139,7 @@ SIMPLE_JWT = {
     'UPDATE_LAST_LOGIN': False,
 
     'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,
+    'SIGNING_KEY': config("JWT_KEY"),
     'VERIFYING_KEY': None,
     'AUDIENCE': None,
     'ISSUER': None,
